@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,91 @@
     <title>Candidate App</title>
     <link rel="stylesheet" href="candidate.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="row">
+            <div class="create-candidate">
+                <h2 class="heading-2">Candidator</h2>
+                <div class="create-area">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input class="form-control" type="text" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input class="form-control" type="number" id="age">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select class="form-control" id="gender">
+                                <option value="0" selected disabled>Select gender</option>
+                                <option value="true">Male</option>
+                                <option value="false">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="education">Education</label>
+                            <input class="form-control" type="text" id="education">
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+                        <div class="form-group">
+                            <label for="resumeScore">Resume Score</label>
+                            <input class="form-control" type="number" id="resumeScore">
+                        </div>
+                        <div class="form-group">
+                            <label for="videoScore">Video Score</label>
+                            <input class="form-control" type="number" id="videoScore">
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar">Avatar URL</label>
+                            <input
+                                value="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/33.jpg"
+                                class="form-control" type="url" id="avatar">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select class="form-control" id="status">
+                                <option value="0" selected disabled>Select status</option>
+                                <option value="Finished">Finished</option>
+                                <option value="Inprocess">Inprocess</option>
+                                <option value="Cancel">Cancel</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button onclick="saveCandidator()" class="btn btn-dark">Create</button>
+                    <button onclick="resetForm()" class="btn btn-warning">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="show-candidate">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Education</th>
+                            <th>Resume Score</th>
+                            <th>Video Score</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbCandidate">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <script src="candidate.js"></script>
 </body>
+
 </html>
