@@ -12,4 +12,11 @@
 
 ## Thành quả
 1. Link git: https://github.com/khoanguyen84/Candidate-App
-2. Link sản phẩm: 
+2. Link sản phẩm: https://khoanguyen84.github.io/Candidate-App/
+
+## Hướng dẫn cách deploy/relase web bằng github
+1. Vào repository
+2. Chọn tab Settings
+3. Ở menu bên trái chọn Pages
+4. Trong phần brach, chuyển giá trị từ None sang master/main
+5. click vào nút save bên cạnh
