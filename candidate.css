@@ -39,6 +39,11 @@
     padding: 5px 10px;
 }
 
+.table>tfoot>tr>th{
+    padding: 5px 10px;
+    background-color: rgb(184, 209, 149);
+}
+
 .candidate-avatar{
     display: flex;
     align-items: center;
@@ -58,7 +63,9 @@
     text-align: right;
 }
 
-
+.text-center{
+    text-align: center;
+}
 
 .table-hover>tbody>tr:hover{
     background-color: bisque;
@@ -119,6 +126,16 @@
     scale: .97;
 }
 
+.btn-danger{
+    background-color: rgb(250, 5, 5);
+    color: white;
+}
+
+.btn-danger:hover{
+    background-color: rgb(212, 33, 33);
+    scale: .97;
+}
+
 .btn-warning{
     background-color: darkorange;
     color: white;
@@ -129,10 +146,21 @@
     scale: .97;
 }
 
-.times{
+.times, .plus{
     font-weight: bolder;
     font-size: 20px;
 }
-.times:hover{
+.times:hover, .plus:hover{
     color: red;
+}
+
+.d-none{
+    display: none;
+}
+
+.sort{
+    cursor: pointer;
+}
+.sort:hover{
+    color: orange;
 }

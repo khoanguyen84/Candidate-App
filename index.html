@@ -13,12 +13,14 @@
     <div class="container">
         <div class="row">
             <div class="create-candidate">
-                <h2 class="heading-2">Candidator</h2>
+                <!-- <span>(0)</span> -->
+                <h2 class="heading-2">Candidator </h2>
                 <div class="create-area">
                     <div class="col-6">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input class="form-control" type="text" id="name">
+                            <input type="hidden" id="candidateId" value="0">
                         </div>
                         <div class="form-group">
                             <label for="age">Age</label>
@@ -64,7 +66,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button onclick="saveCandidator()" class="btn btn-dark">Create</button>
+                    <button id="btnCreate" onclick="saveCandidator()" class="btn btn-dark">Create</button>
+                    <button id="btnUpdate" onclick="updateCandidator()" class="btn btn-danger d-none">Save</button>
                     <button onclick="resetForm()" class="btn btn-warning">Cancel</button>
                 </div>
             </div>
@@ -74,19 +77,44 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Gender</th>
-                            <th>Age</th>
-                            <th>Education</th>
-                            <th>Resume Score</th>
-                            <th>Video Score</th>
-                            <th>Status</th>
-                            <th></th>
+                            <th>Gender
+                                <span class="sort" title="ascending" onclick="ascending('gender')">&#9650;</span>
+                                <span class="sort" title="descending" onclick="descending('gender')">&#9660;</span>
+                            </th>
+                            <th>Age
+                                <span class="sort" title="ascending" onclick="ascending('age')">&#9650;</span>
+                                <span class="sort" title="descending" onclick="descending('age')">&#9660;</span>
+                            </th>
+                            <th>Education
+                                <span class="sort" title="ascending" onclick="ascending('education')">&#9650;</span>
+                                <span class="sort" title="descending" onclick="descending('education')">&#9660;</span>
+                            </th>
+                            <th>Resume Score
+                                <span class="sort" title="ascending" onclick="ascending('resumeScore')">&#9650;</span>
+                                <span class="sort" title="descending" onclick="descending('resumeScore')">&#9660;</span>
+                            </th>
+                            <th>Video Score
+                                <span class="sort" title="ascending" onclick="ascending('videoScore')">&#9650;</span>
+                                <span class="sort" title="descending" onclick="descending('videoScore')">&#9660;</span>
+                            </th>
+                            <th colspan="2">Status
+                                <span class="sort" title="ascending" onclick="ascending('status')">&#9650;</span>
+                                <span class="sort" title="descending" onclick="descending('status')">&#9660;</span>
+                            </th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody id="tbCandidate">
 
                     </tbody>
+                    <!-- <tfoot>
+                        <tr>
+                            <th colspan="3">Tổng cộng</th>
+                            <th id="sumResumeScore" class="text-right"></th>
+                            <th id="sumVideoScore" class="text-right"></th>
+                            <th colspan="3"></th>
+                        </tr>
+                    </tfoot> -->
                 </table>
             </div>
         </div>
