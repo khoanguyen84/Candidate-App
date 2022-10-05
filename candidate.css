@@ -164,3 +164,37 @@
 .sort:hover{
     color: orange;
 }
+
+#pagination{
+    list-style: none;
+    display: flex;
+}
+
+.page-item>button{
+    border: none;
+    outline: none;
+    padding: 10px;
+    border: 1px solid orange;
+    border-radius: 3px;
+    margin-right: 2px;
+}
+
+.page-item>button:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+
+.active{
+    background-color: darkorange;
+    color: white;
+}
+
+.paging-area{
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.custom-select{
+    width: 60px;
+    border: 1px solid orange;
+}

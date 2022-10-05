@@ -13,6 +13,9 @@ class Candidator {
 }
 const candidate_key = "candidate_app";
 var candidators = [];
+var page_size = 4;
+var total_pages = 0;
+var page_number = 1;
 
 // var cart = [];
 
@@ -26,13 +29,14 @@ function init() {
         ]
         window.localStorage.setItem(candidate_key, JSON.stringify(candidators));
     }
-    else{
+    else {
         candidators = JSON.parse(window.localStorage.getItem(candidate_key));
     }
 }
 
 function renderCandidate() {
-    let htmls = candidators.map(function (can) {
+    let data = candidators.slice((page_size * (page_number - 1)), (page_size * page_number));
+    let htmls = data.map(function (can) {
         return `
             <tr ondblclick="editCandidate(${can.id})">
                 <td class="fw-bolder">${can.gender ? "M" : "F"}</td>
@@ -56,6 +60,7 @@ function renderCandidate() {
         `
     })
     document.getElementById('tbCandidate').innerHTML = htmls.join("");
+    buildPagination();
     // calculator();
 }
 
@@ -190,26 +195,26 @@ function updateCandidator() {
     resetForm();
 }
 
-function ascending(field){
-    candidators.sort(function(can_1, can_2){
+function ascending(field) {
+    candidators.sort(function (can_1, can_2) {
         // return can_1[field] - can_2[field];
-        if( can_1[field] > can_2[field]){
+        if (can_1[field] > can_2[field]) {
             return 1;
         }
-        if( can_1[field] < can_2[field]){
+        if (can_1[field] < can_2[field]) {
             return -1;
         }
         return 0;
     })
     renderCandidate();
 }
-function descending(field){
-    candidators.sort(function(can_1, can_2){
+function descending(field) {
+    candidators.sort(function (can_1, can_2) {
         // return can_2[field] - can_1[field];
-        if( can_2[field] > can_1[field]){
+        if (can_2[field] > can_1[field]) {
             return 1;
         }
-        if( can_2[field] < can_1[field]){
+        if (can_2[field] < can_1[field]) {
             return -1;
         }
         return 0;
@@ -218,6 +223,27 @@ function descending(field){
 }
 
 
+function buildPagination() {
+    total_pages = Math.ceil(candidators.length / page_size);
+    let paginationString = "";
+    let start = page_number == 1 ? 1 : page_number == total_pages ? page_number - 2 : page_number - 1;
+    let end = page_number == total_pages ? total_pages : page_number == 1 ? page_number + 2 : page_number + 1;
+    paginationString += `<li class="page-item"><button onclick='changePage(1)'>&#x25C0;</button></li>`;
+    for (let page = start; page <= end; page++) {
+        paginationString += `<li class="page-item">
+                                    <button class='${page == page_number ? 'active' : ''}'
+                                        onclick='changePage(${page})'>
+                                ${page}</button></li>`
+    }
+    paginationString += `<li class="page-item"><button onclick='changePage(${total_pages})'>&#x25B6;</button></li>`;
+    document.getElementById('pagination').innerHTML = paginationString;
+}
+
+
+function changePage(page) {
+    page_number = page;
+    renderCandidate();
+}
 function ready() {
     init();
     renderCandidate();
